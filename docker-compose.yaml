@@ -1,0 +1,81 @@
+version: "3"
+services:
+
+  component:
+    build: .
+    image: machinelearning-project-template:latest
+    environment:
+      USER_ID: kongzii
+      MLFLOW_EXPERIMENT_NAME: machinelearning-project-template
+    volumes:
+      - ./:/app
+      - ./tensorboard:/tensorboard
+      - ./datas:/datas
+    depends_on:
+      - tensorboard
+      - mlflow
+
+  serve:
+    build: .
+    image: machinelearning-project-template:latest
+    command:
+      - uvicorn 
+      - serve.main:app 
+      - --reload
+      - --host=0.0.0.0
+      - --port=8000
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+      - ./datas:/datas
+
+  clean:
+    build: .
+    image: machinelearning-project-template:latest
+    command: "find /temp -type f,d -not -name .gitkeep -not -name tensorboard -not -name mlflow -not -name temp -not -name datas -delete"
+    volumes:
+      - ./tensorboard:/temp/tensorboard
+      - ./mlflow:/temp/mlflow
+      - ./datas:/temp/datas
+
+  tensorboard:
+    build: .
+    image: machinelearning-project-template:latest
+    command:
+      - tensorboard
+      - --host=0.0.0.0
+      - --port=8070
+      - --logdir=/tensorboard
+    ports:
+      - 8070:8070
+    volumes:
+      - ./tensorboard:/tensorboard
+
+  mlflow:
+    image: docker.pkg.github.com/kongzii/mlflow-kubernetes/mlflow:1.10.0
+    command: 
+      - mlflow
+      - server
+      - --host=0.0.0.0
+      - --port=8080
+      - --workers=1
+      - --backend-store-uri=/mlflow
+    ports:
+      - 8080:8080
+    volumes:
+      - ./mlflow:/mlflow
+
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    ports:
+      - 8888:8888
+    volumes:
+      - ./datas:/datas
+      - ./:/home/jovyan/work
+      - ./tensorboard:/tensorboard
+    depends_on:
+      - tensorboard
+      - mlflow

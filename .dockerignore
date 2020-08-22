@@ -1,0 +1,14 @@
+# Data
+datas/*
+
+# Python
+__pycache__
+
+# Tools
+mlflow/*
+tensorboard/*
+.ipynb_checkpoints
+
+# VS Code
+.history
+.vscode

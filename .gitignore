@@ -1,0 +1,20 @@
+# Data
+datas/*
+!datas/.gitkeep
+
+# Python
+__pycache__
+
+# Tools
+mlflow/*
+!mlflow/.gitkeep
+tensorboard/*
+!tensorboard/.gitkeep
+.ipynb_checkpoints
+
+# VS Code
+.history
+.vscode
+
+# System
+.DS_Store
