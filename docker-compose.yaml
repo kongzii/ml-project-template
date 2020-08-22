@@ -5,7 +5,7 @@ services:
     build: .
     image: machinelearning-project-template:latest
     environment:
-      USER_ID: jung
+      USER_ID: kongzii
       MLFLOW_EXPERIMENT_NAME: machinelearning-project-template
     volumes:
       - ./:/app
