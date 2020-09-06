@@ -1,5 +1,4 @@
 import abc
-import tensorflow as tf
 
 # TODO: Meaningful typings
 ModelInput = object
