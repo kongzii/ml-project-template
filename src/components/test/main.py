@@ -17,7 +17,7 @@ def main(args: argparse.Namespace):
     keras_model = KerasModel(args.model_dir)
 
     raw_test_ds = tf.keras.preprocessing.text_dataset_from_directory(
-        f"{args.dataset_dir}/test", 
+        f"{args.dataset_dir}/test",
         label_mode="int",
         batch_size=args.batch_size,
         class_names=keras_model.class_names,
@@ -47,7 +47,7 @@ def main(args: argparse.Namespace):
 
     logging.info(scores)
     mlflow.set_tags(scores)
-    
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

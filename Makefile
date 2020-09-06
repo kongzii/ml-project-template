@@ -7,19 +7,19 @@ dataset:
 	clear
 	docker-compose build component
 	docker-compose run component \
-		python3 /app/src/components/dataset/main.py 
+		python3 /app/src/components/dataset/main.py
 
 train:
 	clear
 	docker-compose build component
 	docker-compose run component \
-		python3 /app/src/components/train/main.py 
+		python3 /app/src/components/train/main.py
 
 test:
 	clear
 	docker-compose build component
 	docker-compose run component \
-		python3 /app/src/components/test/main.py 
+		python3 /app/src/components/test/main.py
 
 serve:
 	clear
@@ -27,7 +27,7 @@ serve:
 		--build \
 		--attach-dependencies \
 		--abort-on-container-exit \
-		serve 
+		serve
 
 clean:
 	docker-compose stop

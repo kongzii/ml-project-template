@@ -1,9 +1,9 @@
 # Machine Learning project template
 
-This repository could serve as a starting point for your machine learning projects. 
+This repository could serve as a starting point for your machine learning projects.
 It contains ready to train (Keras) and serve (FastAPI) model implementation for the IMDB Movie Reviews dataset.
 
-Using a few simple commands, you can fire up `MLFlow`, `TensorBoard`, `Jupyter`, `training`, or `serving` the model. 
+Using a few simple commands, you can fire up `MLFlow`, `TensorBoard`, `Jupyter`, `training`, or `serving` the model.
 Metrics are automatically logged in `MLFlow` and `TensorBoard`.
 
 ## Requirements
@@ -49,7 +49,7 @@ Available at http://0.0.0.0:8888/.
 
 ### Serve via FastAPI
 
-After training is complete, run `make serve`. This will start the server at http://localhost:8000. 
+After training is complete, run `make serve`. This will start the server at http://localhost:8000.
 
 You can use it to easily inference with models:
 

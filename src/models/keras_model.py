@@ -14,7 +14,7 @@ class KerasModel(Model):
 
     def predict(self, inputs: ModelInput, return_id: bool = False) -> ModelOutput:
         return [{
-            (self.id_to_class_name(i) if not return_id else i): p 
+            (self.id_to_class_name(i) if not return_id else i): p
             for i, p in enumerate(row)
         } for row in self.model.predict(inputs).tolist()]
 

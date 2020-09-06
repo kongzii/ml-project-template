@@ -30,4 +30,3 @@ def init_mlflow(
             mlflow.log_params(vars(args))
 
         yield
-    

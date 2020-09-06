@@ -19,8 +19,8 @@ services:
     build: .
     image: machinelearning-project-template:latest
     command:
-      - uvicorn 
-      - serve.main:app 
+      - uvicorn
+      - serve.main:app
       - --reload
       - --host=0.0.0.0
       - --port=8000
@@ -54,7 +54,7 @@ services:
 
   mlflow:
     image: docker.pkg.github.com/kongzii/mlflow-kubernetes/mlflow:1.10.0
-    command: 
+    command:
       - mlflow
       - server
       - --host=0.0.0.0

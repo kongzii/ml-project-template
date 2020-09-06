@@ -67,7 +67,7 @@ def main(args: argparse.Namespace):
 
     with open(f"{model_dir}/vocabulary.txt", "w") as f:
         f.write(json.dumps(vectorize_layer.get_vocabulary()))
-    
+
     with open(f"{model_dir}/class_names.txt", "w") as f:
         f.write(json.dumps(args.class_names))
 
@@ -82,7 +82,7 @@ def main(args: argparse.Namespace):
     )
 
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
-        log_dir=f"{args.tensorboard_dir}/{COMPONENT_NAME}/", 
+        log_dir=f"{args.tensorboard_dir}/{COMPONENT_NAME}/",
     )
     earlystopping_callback = tf.keras.callbacks.EarlyStopping(
         monitor="val_categorical_accuracy",
@@ -96,8 +96,8 @@ def main(args: argparse.Namespace):
     )
 
     model.fit(
-        raw_train_ds, 
-        validation_data=raw_val_ds, 
+        raw_train_ds,
+        validation_data=raw_val_ds,
         epochs=args.epochs,
         steps_per_epoch=args.steps_per_epoch,
         callbacks=[
