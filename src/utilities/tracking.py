@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 def init_mlflow(
     run_name: str = "default",
     args: argparse.Namespace = None,
-    enable_tensorflow_autolog: bool = False
+    enable_tensorflow_autolog: bool = False,
 ):
     user_id = os.environ.get("USER_ID", getpass.getuser())
     experiment_name = os.environ.get("MLFLOW_EXPERIMENT_NAME", "unknown")

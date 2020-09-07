@@ -14,7 +14,9 @@ MODEL_PATH = os.environ.get("MODEL_PATH", "/datas/model")
 
 
 if not os.path.exists(MODEL_PATH):
-    raise ValueError(f"Directory with saved model does not exist: {MODEL_PATH}")
+    raise ValueError(
+        f"Directory with saved model does not exist: {MODEL_PATH}"
+    )
 
 
 class Item(BaseModel):

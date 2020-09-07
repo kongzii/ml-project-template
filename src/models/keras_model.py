@@ -12,11 +12,16 @@ class KerasModel(Model):
         with open(self.model_path + "/class_names.txt", "r") as f:
             self.class_names = json.load(f)
 
-    def predict(self, inputs: ModelInput, return_id: bool = False) -> ModelOutput:
-        return [{
-            (self.id_to_class_name(i) if not return_id else i): p
-            for i, p in enumerate(row)
-        } for row in self.model.predict(inputs).tolist()]
+    def predict(
+        self, inputs: ModelInput, return_id: bool = False
+    ) -> ModelOutput:
+        return [
+            {
+                (self.id_to_class_name(i) if not return_id else i): p
+                for i, p in enumerate(row)
+            }
+            for row in self.model.predict(inputs).tolist()
+        ]
 
     def class_name_to_id(self, name: str) -> int:
         return self.class_names.index(name)

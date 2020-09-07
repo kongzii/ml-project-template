@@ -9,8 +9,7 @@ COMPONENT_NAME = "dataset"
 
 def main(args: argparse.Namespace):
     dataset_archive = download(
-        args.dataset_url,
-        args.datas_dir + "/dataset.tar.gz"
+        args.dataset_url, args.datas_dir + "/dataset.tar.gz"
     )
     extract(dataset_archive, args.datas_dir)
 
@@ -18,7 +17,10 @@ def main(args: argparse.Namespace):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--datas-dir", default="/datas")
-    parser.add_argument("--dataset-url", default="https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz")
+    parser.add_argument(
+        "--dataset-url",
+        default="https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz",
+    )
 
     args = parser.parse_args()
 

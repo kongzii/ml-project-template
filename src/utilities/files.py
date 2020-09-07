@@ -8,7 +8,7 @@ def download(url: str, to: str) -> str:
 
     r = requests.get(url)
 
-    with open(to, 'wb') as f:
+    with open(to, "wb") as f:
         f.write(r.content)
 
     logging.info(f"{url} downloaded to {to}.")

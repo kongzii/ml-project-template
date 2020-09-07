@@ -3,7 +3,13 @@ import argparse
 import logging
 import tensorflow as tf
 
-from sklearn.metrics import accuracy_score, confusion_matrix, f1_score, precision_score, recall_score
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    f1_score,
+    precision_score,
+    recall_score,
+)
 from utilities import SEED_VALUE, timing
 from utilities.tracking import init_mlflow
 from utilities.files import download, extract

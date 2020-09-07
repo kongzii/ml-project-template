@@ -23,12 +23,16 @@ def create_model(
     )
     vectorize.adapt(dataset_to_adapt)
 
-    text_inputs = tf.keras.Input(shape=(1,), dtype=tf.string, name="input_raw_text")
+    text_inputs = tf.keras.Input(
+        shape=(1,), dtype=tf.string, name="input_raw_text"
+    )
 
     x = vectorize(text_inputs)
     x = tf.keras.layers.Embedding(max_tokens + 1, embedding_dim)(x)
 
-    x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(units=64, return_sequences=True))(x)
+    x = tf.keras.layers.Bidirectional(
+        tf.keras.layers.LSTM(units=64, return_sequences=True)
+    )(x)
     x = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(units=64))(x)
 
     outputs = tf.keras.layers.Dense(2, activation="softmax", name="output")(x)
@@ -122,5 +126,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    with init_mlflow(run_name=COMPONENT_NAME, args=args, enable_tensorflow_autolog=True):
+    with init_mlflow(
+        run_name=COMPONENT_NAME, args=args, enable_tensorflow_autolog=True
+    ):
         main(args)
