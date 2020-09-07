@@ -1,0 +1,34 @@
+name: LintTest
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Black:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install black
+        run: pip install black
+      - name: Format
+        run: black .
+      - name: Run git diff
+        run: git diff --exit-code
+
+  Flake8:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install black
+        run: pip install flake8
+      - name: Check
+        run: flake8 .
