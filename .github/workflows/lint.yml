@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install black
-        run: pip install black
+        run: pip3 install black
       - name: Format
         run: black .
       - name: Run git diff
@@ -29,6 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install black
-        run: pip install flake8
+        run: pip3 install flake8
       - name: Check
         run: flake8 .
