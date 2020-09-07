@@ -15,9 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install black
-        run: pip3 install black
+        run: python3 -m pip install black
       - name: Format
-        run: black .
+        run: python3 -m black .
       - name: Run git diff
         run: git diff --exit-code
 
@@ -29,6 +29,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install black
-        run: pip3 install flake8
+        run: python3 -m pip install flake8
       - name: Check
-        run: flake8 .
+        run: python3 -m flake8 .
